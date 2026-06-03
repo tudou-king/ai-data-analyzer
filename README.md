@@ -1,6 +1,6 @@
-﻿# 📊 AI 数据分析助手
+# 📊 AI 数据分析助手
 
-> 🥔 土豆大王 制作 · v1.0.0
+> v1.0.0
 >
 > 上传 CSV / Excel 文件，自动分析数据、生成图表、获取 AI 洞察结论。
 > 免费 · 开源 · 支持 Windows 桌面版 + 网页版
@@ -22,7 +22,7 @@
 
 ### 方式一：下载 Windows 便携版（推荐）
 
-1. 进入 [Releases](https://github.com/your-username/ai-data-analyzer/releases) 页面
+1. 进入 [Releases](https://github.com/tudou-king/ai-data-analyzer/releases) 页面
 2. 下载 `AI数据分析助手-1.0.0-便携版.exe`
 3. 双击运行，无需安装
 
@@ -32,7 +32,7 @@
 
 ```bash
 # 克隆仓库
-git clone https://github.com/your-username/ai-data-analyzer.git
+git clone https://github.com/tudou-king/ai-data-analyzer.git
 cd ai-data-analyzer
 
 # 安装依赖
@@ -54,7 +54,7 @@ python -m http.server 8080
 
 1. Fork 本仓库
 2. 进入 Settings → Pages → Source 选择 `GitHub Actions`
-3. 推送代码后自动部署到 `https://your-username.github.io/ai-data-analyzer/`
+3. 推送代码后自动部署到 `https://tudou-king.github.io/ai-data-analyzer/`
 
 ---
 
@@ -160,4 +160,5 @@ npm run dist:installer
 
 ---
 
-**🥔 土豆大王 制作**
+
+
