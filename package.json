@@ -2,7 +2,6 @@
   "name": "ai-data-analyzer",
   "version": "1.0.0",
   "description": "AI 数据分析助手 - 上传 CSV/Excel，自动分析、出图表、给结论",
-  "author": "土豆大王",
   "license": "MIT",
   "main": "main.js",
   "scripts": {
