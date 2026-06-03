@@ -1,0 +1,165 @@
+/* ==================== 基础重置 ==================== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:15px;-webkit-font-smoothing:antialiased}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  color:#1e293b;background:#f1f5f9;line-height:1.6;min-height:100vh;display:flex;flex-direction:column}
+a{color:#4f46e5;text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* ==================== Header ==================== */
+.header{background:linear-gradient(135deg,#4f46e5 0%,#7c3aed 100%);color:#fff;padding:.85rem 1.5rem;
+  position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(79,70,229,.35)}
+.header-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.header-brand{display:flex;align-items:center;gap:.75rem}
+.header-icon{font-size:1.8rem}
+.header h1{font-size:1.25rem;font-weight:700;letter-spacing:.5px}
+.header-sub{font-size:.8rem;opacity:.85;margin-top:1px}
+
+/* ==================== Buttons ==================== */
+.btn{display:inline-flex;align-items:center;gap:.4rem;border:none;border-radius:8px;padding:.55rem 1.1rem;
+  font-size:.88rem;font-weight:600;cursor:pointer;transition:all .15s}
+.btn-primary{background:#4f46e5;color:#fff}
+.btn-primary:hover{background:#4338ca;transform:translateY(-1px)}
+.btn-outline{background:transparent;color:#4f46e5;border:1.5px solid #4f46e5}
+.btn-outline:hover{background:#eef2ff}
+.btn-sm{padding:.4rem .85rem;font-size:.82rem}
+.btn-settings{background:rgba(255,255,255,.15);color:#fff;backdrop-filter:blur(4px)}
+.btn-settings:hover{background:rgba(255,255,255,.25)}
+.icon-gear{font-size:1.05rem}
+
+/* ==================== Modal ==================== */
+.modal-overlay{position:fixed;inset:0;background:rgba(15,23,42,.45);backdrop-filter:blur(3px);
+  display:none;align-items:center;justify-content:center;z-index:200}
+.modal-overlay.open{display:flex}
+.modal{background:#fff;border-radius:14px;width:min(440px,92vw);box-shadow:0 20px 60px rgba(0,0,0,.18);
+  animation:modalIn .2s ease}
+@keyframes modalIn{from{opacity:0;transform:translateY(16px) scale(.97)}to{opacity:1;transform:none}}
+.modal-header{display:flex;align-items:center;justify-content:space-between;padding:1.1rem 1.3rem;border-bottom:1px solid #e2e8f0}
+.modal-header h2{font-size:1.05rem}
+.modal-close{background:none;border:none;font-size:1.5rem;cursor:pointer;color:#64748b;line-height:1}
+.modal-close:hover{color:#1e293b}
+.modal-body{padding:1.2rem 1.3rem;display:flex;flex-direction:column;gap:.9rem}
+.modal-body label{font-size:.82rem;font-weight:600;color:#475569;display:flex;flex-direction:column;gap:.3rem}
+.modal-body input{border:1.5px solid #cbd5e1;border-radius:8px;padding:.55rem .75rem;font-size:.9rem;
+  transition:border-color .15s;outline:none}
+.modal-body input:focus{border-color:#4f46e5;box-shadow:0 0 0 3px rgba(79,70,229,.12)}
+.hint{font-size:.78rem;color:#94a3b8}
+.modal-footer{display:flex;gap:.6rem;justify-content:flex-end;padding:0 1.3rem 1.2rem}
+
+/* ==================== Main ==================== */
+.main{flex:1;max-width:1200px;width:100%;margin:0 auto;padding:1.5rem}
+
+/* ==================== Upload ==================== */
+.upload-section{display:flex;flex-direction:column;align-items:center;gap:1rem;margin-top:2rem}
+.dropzone{width:100%;max-width:600px;border:2.5px dashed #cbd5e1;border-radius:16px;padding:3rem 2rem;
+  text-align:center;cursor:pointer;transition:all .2s;background:#fff}
+.dropzone:hover,.dropzone.dragover{border-color:#4f46e5;background:#eef2ff}
+.dropzone-content{pointer-events:none}
+.dropzone-icon{font-size:3rem;margin-bottom:.6rem}
+.dropzone-text{font-size:1rem;color:#475569}
+.dropzone-text .link{color:#4f46e5;font-weight:600;cursor:pointer}
+.dropzone-hint{font-size:.82rem;color:#94a3b8;margin-top:.3rem}
+.upload-actions{display:flex;gap:.6rem}
+
+/* ==================== Loading ==================== */
+.loading-section{display:flex;flex-direction:column;align-items:center;gap:1rem;padding:4rem 0}
+.spinner{width:44px;height:44px;border:4px solid #e2e8f0;border-top-color:#4f46e5;border-radius:50%;
+  animation:spin .7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loading-section p{color:#64748b;font-size:.95rem}
+
+/* ==================== Info Bar ==================== */
+.info-bar{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;background:#fff;border-radius:10px;
+  padding:.75rem 1rem;margin-bottom:1rem;box-shadow:0 1px 4px rgba(0,0,0,.06);font-size:.88rem}
+.info-bar .badge{display:inline-flex;align-items:center;gap:.3rem;background:#eef2ff;color:#4f46e5;
+  padding:.25rem .65rem;border-radius:6px;font-weight:600;font-size:.82rem}
+
+/* ==================== Tabs ==================== */
+.tabs{display:flex;gap:.25rem;margin-bottom:1.2rem;border-bottom:2px solid #e2e8f0;padding-bottom:0}
+.tab{background:none;border:none;padding:.65rem 1rem;font-size:.9rem;font-weight:600;color:#64748b;
+  cursor:pointer;border-bottom:2.5px solid transparent;margin-bottom:-2px;transition:all .15s;white-space:nowrap}
+.tab:hover{color:#4f46e5}
+.tab.active{color:#4f46e5;border-bottom-color:#4f46e5}
+.tab-panel{display:none}
+.tab-panel.active{display:block}
+
+/* ==================== Stats Grid ==================== */
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:.75rem;margin-bottom:1.5rem}
+.stat-card{background:#fff;border-radius:10px;padding:1rem 1.1rem;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.stat-card .stat-label{font-size:.78rem;color:#64748b;font-weight:500;margin-bottom:.2rem}
+.stat-card .stat-value{font-size:1.35rem;font-weight:700;color:#1e293b}
+
+/* ==================== Section Title ==================== */
+.section-title{font-size:1rem;font-weight:700;color:#334155;margin:1.5rem 0 .75rem;padding-left:.25rem;
+  border-left:3px solid #4f46e5;padding-left:.6rem}
+
+/* ==================== Data Table ==================== */
+.table-wrap{overflow-x:auto;border-radius:10px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.data-table{width:100%;border-collapse:collapse;background:#fff;font-size:.85rem}
+.data-table th{background:#f8fafc;color:#475569;font-weight:600;text-align:left;padding:.6rem .75rem;
+  border-bottom:2px solid #e2e8f0;white-space:nowrap}
+.data-table td{padding:.5rem .75rem;border-bottom:1px solid #f1f5f9;max-width:260px;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.data-table tbody tr:hover{background:#f8fafc}
+.data-table .type-num{color:#059669;font-weight:600}
+.data-table .type-cat{color:#d97706;font-weight:600}
+.data-table .missing-warn{color:#ef4444;font-weight:600}
+
+/* ==================== Charts Grid ==================== */
+.charts-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(420px,100%),1fr));gap:1rem}
+.chart-card{background:#fff;border-radius:12px;padding:1rem 1.2rem;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.chart-card h4{font-size:.9rem;font-weight:700;color:#334155;margin-bottom:.75rem}
+.chart-card canvas{width:100%!important;max-height:320px}
+
+/* Heatmap special */
+.heatmap-wrap{overflow-x:auto}
+.heatmap-wrap canvas{display:block;margin:0 auto}
+
+/* ==================== AI Content ==================== */
+.ai-content{background:#fff;border-radius:12px;padding:1.5rem;box-shadow:0 1px 4px rgba(0,0,0,.06);
+  min-height:200px;line-height:1.75}
+.ai-content h1,.ai-content h2,.ai-content h3{margin:1.2em 0 .5em;color:#1e293b}
+.ai-content h2{font-size:1.1rem;border-bottom:1px solid #e2e8f0;padding-bottom:.3em}
+.ai-content h3{font-size:1rem}
+.ai-content ul,.ai-content ol{padding-left:1.4em;margin:.5em 0}
+.ai-content code{background:#f1f5f9;padding:.15em .35em;border-radius:4px;font-size:.88em}
+.ai-content pre{background:#1e293b;color:#e2e8f0;padding:1rem;border-radius:8px;overflow-x:auto;margin:.75em 0}
+.ai-content pre code{background:none;color:inherit}
+.ai-content table{border-collapse:collapse;width:100%;margin:.75em 0}
+.ai-content table th,.ai-content table td{border:1px solid #e2e8f0;padding:.4em .6em;text-align:left}
+.ai-content table th{background:#f8fafc}
+.ai-placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:1rem;padding:3rem 1rem;color:#64748b;text-align:center}
+.ai-spinner{display:flex;flex-direction:column;align-items:center;gap:.75rem;padding:3rem 0;color:#64748b}
+
+/* ==================== Chat ==================== */
+.chat-messages{min-height:240px;max-height:500px;overflow-y:auto;display:flex;flex-direction:column;gap:.75rem;
+  padding:1rem;background:#fff;border-radius:12px 12px 0 0;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.chat-msg{max-width:80%;padding:.65rem 1rem;border-radius:14px;font-size:.9rem;line-height:1.6;word-break:break-word}
+.chat-msg.user{align-self:flex-end;background:#4f46e5;color:#fff;border-bottom-right-radius:4px}
+.chat-msg.ai{align-self:flex-start;background:#f1f5f9;color:#1e293b;border-bottom-left-radius:4px}
+.chat-msg.ai p{margin:.25em 0}
+.chat-msg.ai ul,.chat-msg.ai ol{padding-left:1.2em;margin:.3em 0}
+.chat-msg.ai code{background:#e2e8f0;padding:.1em .3em;border-radius:3px;font-size:.88em}
+.chat-msg.ai pre{background:#1e293b;color:#e2e8f0;padding:.6rem;border-radius:6px;overflow-x:auto;margin:.4em 0;font-size:.82rem}
+.chat-msg.ai pre code{background:none;color:inherit}
+.chat-input-bar{display:flex;gap:.5rem;padding:.75rem;background:#fff;border-radius:0 0 12px 12px;
+  border-top:1px solid #e2e8f0}
+.chat-input-bar input{flex:1;border:1.5px solid #cbd5e1;border-radius:8px;padding:.55rem .75rem;font-size:.9rem;
+  outline:none;transition:border-color .15s}
+.chat-input-bar input:focus{border-color:#4f46e5}
+.chat-empty{text-align:center;color:#94a3b8;padding:3rem 1rem;font-size:.9rem}
+
+/* ==================== Footer ==================== */
+.footer{text-align:center;padding:1.5rem;color:#94a3b8;font-size:.82rem;margin-top:auto}
+.footer a{color:#64748b}
+
+/* ==================== Responsive ==================== */
+@media(max-width:640px){
+  .header-inner{flex-direction:column;align-items:flex-start;gap:.5rem}
+  .tabs{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .tab{padding:.5rem .7rem;font-size:.82rem}
+  .charts-grid{grid-template-columns:1fr}
+  .main{padding:1rem}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+}

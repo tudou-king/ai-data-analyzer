@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI 数据分析助手</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked@12.0.0/marked.min.js"></script>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <div class="header-brand">
+      <span class="header-icon">📊</span>
+      <div>
+        <h1>AI 数据分析助手</h1>
+        <p class="header-sub">上传 CSV / Excel，自动分析 · 智能出图 · AI 给结论</p>
+      </div>
+    </div>
+    <button class="btn btn-settings" id="btnSettings" title="API 设置">
+      <span class="icon-gear">&#9881;</span> API 设置
+    </button>
+  </div>
+</header>
+
+<!-- ============ API 设置弹窗 ============ -->
+<div class="modal-overlay" id="settingsModal">
+  <div class="modal">
+    <div class="modal-header">
+      <h2>API 设置</h2>
+      <button class="modal-close" id="btnCloseSettings">&times;</button>
+    </div>
+    <div class="modal-body">
+      <label>API Key
+        <input type="password" id="inputApiKey" placeholder="sk-..." autocomplete="off">
+      </label>
+      <label>Base URL
+        <input type="text" id="inputBaseUrl" placeholder="https://api.openai.com/v1">
+      </label>
+      <label>模型名称
+        <input type="text" id="inputModel" placeholder="gpt-4o">
+      </label>
+      <p class="hint">设置保存在浏览器本地，不会上传到任何服务器。</p>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" id="btnTestApi">测试连接</button>
+      <button class="btn btn-primary" id="btnSaveSettings">保存</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 主体内容 ============ -->
+<main class="main">
+
+  <!-- 上传区域 -->
+  <section class="upload-section" id="uploadSection">
+    <div class="dropzone" id="dropzone">
+      <input type="file" id="fileInput" accept=".csv,.xlsx,.xls" hidden>
+      <div class="dropzone-content">
+        <div class="dropzone-icon">📁</div>
+        <p class="dropzone-text">拖拽文件到这里，或 <span class="link">点击选择</span></p>
+        <p class="dropzone-hint">支持 CSV、XLSX、XLS 格式</p>
+      </div>
+    </div>
+    <div class="upload-actions">
+      <button class="btn btn-outline btn-sm" id="btnLoadDemo">加载示例数据</button>
+    </div>
+  </section>
+
+  <!-- 加载状态 -->
+  <section class="loading-section" id="loadingSection" hidden>
+    <div class="spinner"></div>
+    <p id="loadingText">正在分析数据...</p>
+  </section>
+
+  <!-- 结果区域 -->
+  <section class="results-section" id="resultsSection" hidden>
+    <!-- 文件信息条 -->
+    <div class="info-bar" id="infoBar"></div>
+
+    <!-- 标签栏 -->
+    <nav class="tabs">
+      <button class="tab active" data-tab="overview">📋 数据概览</button>
+      <button class="tab" data-tab="charts">📊 可视化</button>
+      <button class="tab" data-tab="ai">🤖 AI 分析</button>
+      <button class="tab" data-tab="chat">💬 追问</button>
+    </nav>
+
+    <!-- 数据概览 -->
+    <div class="tab-panel active" id="panelOverview">
+      <div class="stats-grid" id="statsGrid"></div>
+      <h3 class="section-title">列详情</h3>
+      <div class="table-wrap">
+        <table class="data-table" id="colTable">
+          <thead><tr>
+            <th>列名</th><th>类型</th><th>非空数</th><th>缺失</th><th>唯一值</th><th>统计摘要</th>
+          </tr></thead>
+          <tbody id="colTableBody"></tbody>
+        </table>
+      </div>
+      <h3 class="section-title">数据预览 (前 20 行)</h3>
+      <div class="table-wrap">
+        <table class="data-table" id="previewTable">
+          <thead id="previewHead"></thead>
+          <tbody id="previewBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 可视化 -->
+    <div class="tab-panel" id="panelCharts">
+      <div class="charts-grid" id="chartsGrid"></div>
+    </div>
+
+    <!-- AI 分析 -->
+    <div class="tab-panel" id="panelAi">
+      <div class="ai-content" id="aiContent">
+        <div class="ai-placeholder">
+          <p>请先在「API 设置」中配置你的 API Key，然后点击下方按钮开始分析。</p>
+          <button class="btn btn-primary" id="btnRunAi">开始 AI 分析</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 追问对话 -->
+    <div class="tab-panel" id="panelChat">
+      <div class="chat-messages" id="chatMessages"></div>
+      <div class="chat-input-bar">
+        <input type="text" id="chatInput" placeholder="针对这份数据提问...">
+        <button class="btn btn-primary" id="btnSend">发送</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <p>AI 数据分析助手 · 开源免费 · <a href="https://github.com" target="_blank">GitHub</a></p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,61 @@
+{
+  "name": "ai-data-analyzer",
+  "version": "1.0.0",
+  "description": "AI 数据分析助手 - 上传 CSV/Excel，自动分析、出图表、给结论",
+  "author": "土豆大王",
+  "license": "MIT",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win portable",
+    "dist:installer": "electron-builder --win nsis"
+  },
+  "build": {
+    "appId": "com.tudou.ai-data-analyzer",
+    "productName": "AI 数据分析助手",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "index.html",
+      "style.css",
+      "app.js",
+      "favicon.svg",
+      "sample/**/*"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "favicon.svg"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "AI 数据分析助手"
+    },
+    "portable": {
+      "artifactName": "AI数据分析助手-${version}-便携版.exe"
+    }
+  },
+  "devDependencies": {
+    "@electron/packager": "^20.0.0",
+    "electron": "33.0.0",
+    "electron-builder": "25.1.8"
+  }
+}
